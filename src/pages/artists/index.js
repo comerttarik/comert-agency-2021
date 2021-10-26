@@ -11,17 +11,20 @@ const ArtistsPage = () => {
 export default ArtistsPage
 */
 
-
 import * as React from 'react'
-import { graphql } from 'gatsby'
-import Layout from '../components/layout'
+import { Link, graphql } from 'gatsby'
+import Layout from '../../components/layout'
 
 const ArtistsPage = ({data: {allWpArtist: {edges}}}) => {
   return (
-    <Layout pageTitle="Artists of Comert Agency">
+    <Layout pageTitle="Artists of Inghelbrecht Agency">
       {edges.map((item) => {
         const artist = item.node.artistMeta;
-        return <p key={item.node.id}>{artist.firstName} {artist.lastName}</p>
+        const slug = item.node.slug;
+        return <Link to={`/artists/${slug}`}>
+          <p key={item.node.id}>{artist.firstName} {artist.lastName}</p>
+        </Link>
+
       })}
     </Layout>
   )
@@ -29,15 +32,16 @@ const ArtistsPage = ({data: {allWpArtist: {edges}}}) => {
 
 export const query = graphql`
   query {
-   allWpArtist {
+  allWpArtist {
     edges {
       node {
-        id
         artistMeta {
           firstName
           lastName
           artistName
         }
+        id
+        slug
       }
     }
   }
