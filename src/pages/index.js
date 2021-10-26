@@ -1,3 +1,4 @@
+/*
 import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
@@ -27,5 +28,21 @@ const IndexPage = () => (
     </p>
   </Layout>
 )
+
+export default IndexPage
+*/
+
+import * as React from 'react'
+import Layout from '../components/layout'
+
+const IndexPage = () => {
+  return (
+    <main>
+      <Layout pageTitle="Welcome to Inghelbrecht Agency!">
+      <p>Lorem ipsum</p>
+      </Layout>
+    </main>
+  )
+}
 
 export default IndexPage
